@@ -8,8 +8,8 @@ class ClienteFormulario(ModelForm):
 
     class Meta:
         model = Cliente
-        fields = ['nombre', 'apellido', 'correo', 'telefono', 'direccion', 'fecha_nacimiento', 'tipo_producto',
+        fields = ['nombre', 'apellido', 'correo', 'telefono', 'direccion', 'fecha_pedido', 'tipo_producto',
                   'activo']
 
         widgets = {'email': EmailInput(attrs={'type': 'email'}),
-                   'fecha_nacimiento': DateInput(attrs={'type': 'date'})}
+                   'fecha_pedido': DateInput(attrs={'type': 'date'})}

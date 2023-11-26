@@ -25,7 +25,7 @@ class Cliente(models.Model):
     correo = models.EmailField()
     telefono = models.CharField(max_length=15, blank=True, null=True)
     direccion = models.CharField(max_length=255, blank=True, null=True)
-    fecha_nacimiento = models.DateField(blank=True, null=True)
+    fecha_pedido = models.DateField(blank=True, null=True)
     tipo_producto = models.ForeignKey(Producto, on_delete=models.SET_NULL, null=True, related_name='clientes')
     numero_de_pedido = models.ForeignKey('Pedido', on_delete=models.SET_NULL, blank=True, null=True,
                                          related_name='pedidos')
@@ -36,7 +36,6 @@ class Cliente(models.Model):
 
 class Pedido(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    fecha_pedido = models.DateField()
     descripcion = models.TextField()
     estado = models.CharField(max_length=20, choices=[('pendiente', 'Pendiente'), ('en_proceso', 'En Proceso'),
                                                       ('completado', 'Completado')], default='pendiente')
